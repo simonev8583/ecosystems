@@ -6,12 +6,12 @@ let _user = null;
 let _password = null;
 
 export class DbFactory { 
-    constructor({HostDb, PortDb, DbName, UserDb, PasswordDb}){
-        _host = HostDb;
-        _port = PortDb;
-        _dbName = DbName;
-        _user = UserDb;
-        _password = PasswordDb;
+    constructor({config}){
+        _host = config.DB_SQL_HOST;
+        _port = config.DB_SQL_PORT;
+        _dbName = config.DB_SQL_DB;
+        _user = config.DB_SQL_USER;
+        _password = config.DB_SQL_PASS;
     }
 
     async getMssqlConnection (){
