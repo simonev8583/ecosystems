@@ -1,7 +1,7 @@
-import { User } from "../../../1.domain/entities/security";
+import IUser from "../../../1.domain/entities/security/iuser";
 import { Response } from "../Dtos/response";
 
 
 export interface IAuthApplication {
-    login: (userLogin: User) => Promise<Response>;
+    login: (userLogin: IUser) => Promise<Response>;
 }

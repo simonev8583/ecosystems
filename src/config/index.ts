@@ -11,4 +11,5 @@ export = {
   DB_SQL_HOST: process.env.DB_SQL_HOST,
   DB_SQL_PORT: process.env.DB_SQL_PORT,
   JWT_SECRET: process.env.JWT_SECRET,
+  DB_URI: process.env.DB_URI,
 };

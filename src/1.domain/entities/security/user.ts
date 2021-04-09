@@ -1,12 +1,30 @@
-export class User {
-    private identification: string;
-    private password: string;
+import { Model, model, Schema} from 'mongoose'
+import IUser from './iuser';
 
-    public getIdentification(){
-        return this.identification;
-    }
 
-    public getPassword(){
-        return this.password;
+const UserSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    surname: {
+        type: String,
+        required: true
+    },
+    identification: {
+        type: String,
+        required: true
+    },
+    password:{
+        type: String,
+        required: true
+    },
+    salt: {
+        type: String,
+        required: true
     }
-}
+});
+
+const User: Model<IUser> = model('users', UserSchema);
+
+export = User;

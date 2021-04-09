@@ -18,8 +18,9 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
+    "fluentvalidation-ts": "^2.2.1",
     "helmet": "^4.4.1",
-    "sequelize": "^5.22.4"
+    "mongoose": "^5.12.3"
   },
   "devDependencies": {
     "@types/express": "github:types/express",

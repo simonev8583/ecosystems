@@ -1,5 +1,6 @@
-import { User } from "../../../1.domain/entities/security/user";
+import IUser from "../../../1.domain/entities/security/iuser";
 import { IUserRepository } from "../../../1.domain/interfaces/security/iuser.repository";
+import { exceptionTypes, ManagerException } from "../../constants/exceptions";
 
 let _user = null;
 let _db = null;
@@ -10,8 +11,21 @@ export class UserRepository implements IUserRepository {
         _user = User;
         _db = DbFactory;
     }
+    getById: (id: string) => Promise<IUser>;
+    getByIdentification: (id: string) => Promise<IUser>;
 
-    async validateCredentials(userLogin: User){
-        return await userLogin;
+    async validateCredentials(userLogin: IUser){
+        await _db.getMongoConnection();
+        return await _user.find();  
+    }
+
+    async register(user: IUser){
+        try {
+            return await _user.create(user);
+        } catch (err) {            
+            for (var field in err.errors) {
+                throw new ManagerException(exceptionTypes.Database, err.errors[field].message)
+            }
+        }
     }
 }
