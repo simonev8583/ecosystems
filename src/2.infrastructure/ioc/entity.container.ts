@@ -6,6 +6,6 @@ export function containerEntity(container: any) {
     container.register({
         User: asValue(SecurityModel.User),
         Account: asValue(AccountModel.Account),
-        UserLoginDto : asClass(Dtos.UserLoginDto).transient()
+        UserLoginDto : asClass(Dtos.UserLoginDto).transient(),
     })
 }

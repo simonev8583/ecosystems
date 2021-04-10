@@ -1,9 +1,10 @@
 import {asClass } from 'awilix';
 
-import { AuthController } from '../../4.ui/controller';
+import { AuthController, AccountController } from '../../4.ui/controller';
 
 export function containerController(container: any) { 
     container.register({
-        AuthController: asClass(AuthController.AuthController.bind(AuthController.AuthController)).singleton()
-    })
+        AuthController: asClass(AuthController.AuthController.bind(AuthController.AuthController)).singleton(),
+        AccountController: asClass(AccountController.AccountController.bind(AuthController.AuthController)).singleton(),
+    });
 }

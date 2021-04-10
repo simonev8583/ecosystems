@@ -13,7 +13,7 @@ export module ApplicationGeneric {
             }
             catch(ex){
                 response.message = ex.message;
-                response.type = ex.Type;
+                response.type = ex.type;
             };
             return response;
         }

@@ -1,5 +1,4 @@
-import { use } from 'express/lib/application';
-import {Validator, AsyncValidator} from 'fluentvalidation-ts'
+import {AsyncValidator} from 'fluentvalidation-ts'
 import { Encrypt } from '../../../2.infrastructure/constants/helpers/encrypt.helper';
 import IUser from '../../entities/security/iuser';
 import { IUserRepository } from '../../interfaces';

@@ -20,7 +20,7 @@ const AccountSchema = new Schema({
         type: Types.ObjectId,
         ref: "users",
         required: true,
-        autopopulate : true
+        autopopulate : false
     }
 })
 

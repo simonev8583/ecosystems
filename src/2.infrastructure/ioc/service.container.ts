@@ -1,9 +1,10 @@
 import {asClass } from 'awilix';
 
-import {SecurityService} from '../../1.domain/services';
+import {SecurityService, AccountService} from '../../1.domain/services';
 
 export function containerService(container: any) { 
     container.register({
-        UserService: asClass(SecurityService.UserService).singleton()
-    })
+        UserService: asClass(SecurityService.UserService).singleton(),
+        AccountService: asClass(AccountService.AccountService).singleton(),
+    });
 }
