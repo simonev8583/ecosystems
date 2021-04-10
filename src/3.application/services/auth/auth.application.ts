@@ -9,9 +9,11 @@ export class AuthApplication implements IAuthApplication{
     constructor({UserService}){
         _userService = UserService;
     }
+    async register (user: IUser) {
+        return await ApplicationGeneric.Try(() => _userService.register(user));
+    }
 
     async login(userLogin: IUser) {
-        //return await ApplicationGeneric.Try(() => _userService.login(userLogin));
-        return await ApplicationGeneric.Try(() => _userService.register(userLogin));
+        return await ApplicationGeneric.Try(() => _userService.login(userLogin));
     }
 }

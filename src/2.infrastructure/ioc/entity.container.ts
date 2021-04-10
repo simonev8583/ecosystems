@@ -1,9 +1,10 @@
-import { asValue } from 'awilix';
+import { asClass, asValue } from 'awilix';
 
-import { SecurityModel } from '../../1.domain/entities';
+import { SecurityModel, Dtos } from '../../1.domain/entities';
 
 export function containerEntity(container: any) { 
     container.register({
-        User: asValue(SecurityModel.User)
+        User: asValue(SecurityModel.User),
+        UserLoginDto : asClass(Dtos.UserLoginDto).transient()
     })
 }

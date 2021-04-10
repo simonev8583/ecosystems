@@ -1,4 +1,4 @@
-import { Model, model, Schema} from 'mongoose'
+import { Model, model, Schema, VirtualType} from 'mongoose'
 import IUser from './iuser';
 
 

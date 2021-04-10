@@ -12,11 +12,14 @@ export class UserRepository implements IUserRepository {
         _db = DbFactory;
     }
     getById: (id: string) => Promise<IUser>;
-    getByIdentification: (id: string) => Promise<IUser>;
+    async getByIdentification(id: string){
+        await _db.getMongoConnection();
+        return await _user.findOne({identification: id})
+    }
 
     async validateCredentials(userLogin: IUser){
         await _db.getMongoConnection();
-        return await _user.find();  
+        return await _user.findOne({identification: userLogin.identification});  
     }
 
     async register(user: IUser){
