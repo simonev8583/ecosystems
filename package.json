@@ -23,7 +23,8 @@
     "fluentvalidation-ts": "^2.2.1",
     "helmet": "^4.4.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.3"
+    "mongoose": "^5.12.3",
+    "mongoose-autopopulate": "^0.12.3"
   },
   "devDependencies": {
     "@types/express": "github:types/express",

@@ -5,13 +5,15 @@ import { UserLoginDto } from "../../entities/dtos";
 import IUser from "../../entities/security/iuser";
 import { IUserRepository } from "../../interfaces";
 import { IUserService } from "../../interfaces/security/iuser.service";
+import { BaseService } from "../generic/base.service";
 import UserValidator from "./user.validation";
 
 let _userRepository: IUserRepository = null;
 let _userLoginDto: UserLoginDto = null;
 
-export class UserService implements IUserService{
+export class UserService extends BaseService implements IUserService{
     constructor({UserRepository, UserLoginDto}){
+        super(UserRepository);
         _userRepository = UserRepository;
         _userLoginDto = UserLoginDto;
     }
@@ -21,7 +23,7 @@ export class UserService implements IUserService{
         if(Object.keys(isInvalid).length > 0){
             throw new ManagerException(exceptionTypes.Validations,  isInvalid[Object.keys(isInvalid)[0]])            
         }
-        let newUser:IUser = await _userRepository.register(user);
+        let newUser:IUser = await _userRepository.create(user);
         newUser.salt = undefined
         newUser.password = undefined;
         return newUser;

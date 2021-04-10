@@ -1,4 +1,4 @@
-import { connect } from 'mongoose';
+import { connect, connection } from 'mongoose';
 let _config = null;
 
 export class DbFactory { 
@@ -13,5 +13,4 @@ export class DbFactory {
         useUnifiedTopology: true
       });
     }
-
 }
