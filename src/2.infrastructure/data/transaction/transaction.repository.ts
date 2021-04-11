@@ -3,6 +3,7 @@ import { ITransactionRepository } from "../../../1.domain/interfaces/transaction
 import { DbFactory } from "../generic";
 import { BaseRepository } from "../generic/base.repository";
 import ISODate from 'isodate';
+import { exceptionTypes, ManagerException } from "../../constants/exceptions";
 
 
 
@@ -57,7 +58,10 @@ export class TransactionRepository extends BaseRepository implements ITransactio
                 }
             }
         ]);
-        return filter[0]?filter[0].avgQuantity: 0;
+        if(filter[0]){
+            return filter[0].avgQuantity;
+        }
+        throw new ManagerException(exceptionTypes.Database, "No se encontraron datos para calcular el promedio");
     };
 }
 
