@@ -23,4 +23,14 @@ export class AccountRepository extends BaseRepository implements IAccountReposit
         await this._db.getMongoConnection();
         return this._account.find({owner: userId})
     }
+
+    async isAccountUser(source: number, userId: string){
+        await this._db.getMongoConnection();
+        return this._account.findOne({accountNumber: source, owner: userId});
+    };
+
+    async getByAccountNumber(accountNumber: number){
+        await this._db.getMongoConnection();
+        return this._account.findOne({accountNumber:accountNumber});
+    }
 }

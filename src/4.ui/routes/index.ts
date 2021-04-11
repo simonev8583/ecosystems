@@ -6,7 +6,7 @@ import compression from 'compression';
 import 'express-async-errors';
 import {ErrorMiddleware, NotFoundMiddleware} from '../middlewares';
 
-export = function({AuthRoutes, AccountRoutes}){
+export = function({AuthRoutes, AccountRoutes, TransactionRoutes}){
 
     const router = express.Router();
     const apiRoutes = express.Router();
@@ -17,6 +17,7 @@ export = function({AuthRoutes, AccountRoutes}){
 
     apiRoutes.use("/auth", AuthRoutes);
     apiRoutes.use("/account", AccountRoutes);
+    apiRoutes.use("/transaction", TransactionRoutes)
 
     router.use("/api", apiRoutes);
     router.use(NotFoundMiddleware)

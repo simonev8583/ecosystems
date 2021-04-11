@@ -2,7 +2,6 @@ import IAccount from "../../../1.domain/entities/account/iaccount";
 import { UserLoginDto } from "../../../1.domain/entities/dtos";
 import { IAccountService } from "../../../1.domain/interfaces/account/iaccount.service";
 import { IAccountApplication } from "../../interfaces/account/iaccount.application";
-import { Response } from "../../interfaces/Dtos/response";
 import { ApplicationGeneric } from "../../interfaces/helpers/applicationGeneric";
 import { BaseApplication } from "../generic/base.application";
 

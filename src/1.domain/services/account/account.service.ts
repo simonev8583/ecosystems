@@ -31,4 +31,34 @@ export class AccountService extends BaseService implements IAccountService{
     async getByClient(userId: string){
         return this._accountRepository.getByClient(userId);
     }
+
+    async isAccountUser(source: number, userId: string, value: number){
+        let account =  await this._accountRepository.isAccountUser(source, userId);
+        if (account){
+            if(value <= account.balance && value > 0){
+                return account;
+            }
+            throw new ManagerException(exceptionTypes.Configuration, "No cuenta con los suficientes fondos para realizar la transacción");
+        }
+        throw new ManagerException(exceptionTypes.Configuration, "La cuenta de destino no le pertenece");
+    }
+
+    async getByAccountNumber(accountNumber: number){
+        let account = await this._accountRepository.getByAccountNumber(accountNumber);
+        if (account){
+            return account;
+        }
+        throw new ManagerException(exceptionTypes.Configuration, "La cuenta objetivo no existe");
+    }
+
+    async updateBalance(accountNumber: number, quantity: number, isAdd?: boolean) {
+        let currentAccount = await this._accountRepository.get(accountNumber);
+        if(isAdd){
+            currentAccount.balance = currentAccount.balance + quantity;
+        }
+        else{
+            currentAccount.balance = currentAccount.balance - quantity;
+        }
+        return await this._accountRepository.update(currentAccount.id, currentAccount);
+    }
 }
