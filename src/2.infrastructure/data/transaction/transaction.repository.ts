@@ -34,15 +34,30 @@ export class TransactionRepository extends BaseRepository implements ITransactio
                 },
             },
             {
+                $lookup:{
+                    from: "accounts",
+                    localField: "accountSource",
+                    foreignField: "_id",
+                    as:"account"
+                }
+            },
+            {$unwind: "$account"},
+            {
+                $match:{
+                    $expr:{
+                     $and: [{$eq: ["$account.accountNumber", entity.accountNumber]}],
+                    }
+                }
+            },
+            {
                 $group:
                 {
                     _id: entity.accountNumber,
                     avgQuantity: { $avg: "$quantity" }
                 }
             }
-            //Lookup con Accounts para validar el numero de cuenta 
         ]);
-        return 0;
+        return filter[0]?filter[0].avgQuantity: 0;
     };
 }
 
