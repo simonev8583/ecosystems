@@ -10,5 +10,6 @@ export function containerEntity(container: any) {
 
 
         UserLoginDto : asClass(Dtos.UserLoginDto).transient(),
+        AverageTransactionDto: asClass(Dtos.AverageTransactionDto).transient(),
     })
 }

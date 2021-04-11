@@ -25,4 +25,10 @@ export class TransactionController{
         let response = await _transactionApplication.get(id);
         return res.send(response);
     }
+
+    async average(req, res){
+        const {body} = req;
+        const response = await _transactionApplication.average(body)
+        return res.send(response)
+    }
 }

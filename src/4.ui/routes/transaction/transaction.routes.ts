@@ -10,5 +10,7 @@ export = ({TransactionController}) => {
 
     router.get("/getById/:id", [AuthMiddleware], TransactionController.getById);
 
+    router.post("/average", [AuthMiddleware], TransactionController.average)
+
     return router
 }

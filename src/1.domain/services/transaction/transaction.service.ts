@@ -1,4 +1,4 @@
-import { UserLoginDto } from "../../entities/dtos";
+import { AverageTransactionDto, UserLoginDto } from "../../entities/dtos";
 import ITransaction from "../../entities/transaction/itransaction";
 import { ITransactionRepository, ITransactionService } from "../../interfaces/transaction";
 import { BaseService } from "../generic/base.service";
@@ -19,4 +19,9 @@ export class TransactionService extends BaseService implements ITransactionServi
     async getByAccount(accountId: string){
         return this._transactionRepository.getByAccount(accountId);
     };
+
+    async average(entity: AverageTransactionDto){
+        let average = await this._transactionRepository.calculateAverage(entity);
+        return average;
+    }
 }

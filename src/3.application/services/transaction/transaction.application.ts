@@ -1,6 +1,6 @@
 import { BaseApplication } from "../generic/base.application";
 import {ITransactionService} from '../../../1.domain/interfaces/transaction/itransaction.service';
-import { UserLoginDto } from "../../../1.domain/entities/dtos";
+import { AverageTransactionDto, UserLoginDto } from "../../../1.domain/entities/dtos";
 import { ApplicationGeneric } from "../../interfaces/helpers/applicationGeneric";
 import ITransaction from "../../../1.domain/entities/transaction/itransaction";
 import { ITransactionApplication } from "../../interfaces/transaction";
@@ -30,5 +30,9 @@ export class TransactionApplication extends BaseApplication implements ITransact
 
     async getByAccount(accountId: string) {
         return await ApplicationGeneric.Try(()=> this._transactionService.getByAccount(accountId));
+    };
+
+    async average(entity: AverageTransactionDto){
+        return await ApplicationGeneric.Try(() => this._transactionService.average(entity));
     };
 } 
